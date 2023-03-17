@@ -93,39 +93,48 @@ def home():
 
 
         return f'''
-                <form method="POST">
-                    <strong><font size="6">Chat with your favorite characters</font></strong><br>
-                    <label>Enter some text:</label><br>
-                    <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
-                    <label>Select an option:</label><br>
-                    Role: <select id="dropdown" name="role" value="{dropdown_input}">
-                        {dropdown_options}
-                    </select>
-                    Explicit language: <select id="dropdown" name="explicit">
-                        <option value="no" {"selected" if 'no' == request.form.get("explicit") else "" }>no</option>
-                        <option value="yes" {"selected" if 'yes' == request.form.get("explicit") else "" }>yes</option>
-                    </select><input type="hidden" id="history" name="history" value="{chat_history}"><br><br>
-                    <button type="submit" name="button_text" value="submit">Submit</button>
-                    <button type="submit" name="button_text" value="clear">Clear Chat history</button>
-                </form>
-                <br>{chat_history_html_formatted}
+        <body style="background-color: #f2f2f2;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <form method="POST">
+                        <strong><font size="6">Chat with your favorite characters</font></strong><br>
+                        <label>Enter some text:</label><br>
+                        <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
+                        <label>Select an option:</label><br>
+                        Role: <select id="dropdown" name="role" value="{dropdown_input}">
+                            {dropdown_options}
+                        </select>
+                        Explicit language: <select id="dropdown" name="explicit">
+                            <option value="no" {"selected" if 'no' == request.form.get("explicit") else "" }>no</option>
+                            <option value="yes" {"selected" if 'yes' == request.form.get("explicit") else "" }>yes</option>
+                        </select><input type="hidden" id="history" name="history" value="{chat_history}"><br><br>
+                        <button type="submit" name="button_text" value="submit">Submit</button>
+                        <button type="submit" name="button_text" value="clear">Clear Chat history</button>
+                    </form>
+                    <br>{chat_history_html_formatted}
+              </div>
+          </body>
             '''
 
     return f'''
-        <form method="POST">
-            <strong><font size="6">Chat with your favorite characters</font></strong><br>
-            <label>Enter some text:</label><br>
-            <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
-            <label>Select an option:</label><br>
-            Role: <select id="dropdown" name="role">
-                {dropdown_options}
-            </select>
-            Explicit language: <select id="dropdown" name="explicit">
-                <option value="yes">yes</option>
-                <option value="no">no</option>                
-            </select><input type="hidden" id="history" name="history" value=" "><br><br>
-            <button type="submit" name="button_text" value="submit">Submit</button>
-        </form>
+    <body style="background-color: #f2f2f2;">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <form method="POST">
+                <strong><font size="6">Chat with your favorite characters</font></strong><br>
+                <label>Enter some text:</label><br>
+                <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
+                <label>Select an option:</label><br>
+                Role: <select id="dropdown" name="role">
+                    {dropdown_options}
+                </select>
+                Explicit language: <select id="dropdown" name="explicit">
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>   
+                </select><input type="hidden" id="history" name="history" value=" "><br><br>
+                <button type="submit" name="button_text" value="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+        
     '''
 
 
