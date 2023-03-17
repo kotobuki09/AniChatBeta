@@ -94,6 +94,7 @@ def home():
 
         return f'''
                 <form method="POST">
+                    <strong><font size="6">Chat with your favorite characters</font></strong><br>
                     <label>Enter some text:</label><br>
                     <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
                     <label>Select an option:</label><br>
@@ -112,6 +113,7 @@ def home():
 
     return f'''
         <form method="POST">
+            <strong><font size="6">Chat with your favorite characters</font></strong><br>
             <label>Enter some text:</label><br>
             <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
             <label>Select an option:</label><br>
