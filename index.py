@@ -111,8 +111,8 @@ def home():
                         <button type="submit" name="button_text" value="clear">Clear Chat history</button>
                     </form>
                     <br>{chat_history_html_formatted}
-              </div>
-          </body>
+            </div>
+        </body>
             '''
 
     return f'''
