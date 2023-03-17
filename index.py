@@ -119,7 +119,7 @@ def home():
     <body style="background-color: #f2f2f2;">
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <form method="POST">
-                <strong><font size="6">Chat with your favorite characters</font></strong><br>
+                <strong><font size="6">Chat with your favorite characters BETA</font></strong><br>
                 <label>Enter some text:</label><br>
                 <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
                 <label>Select an option:</label><br>
