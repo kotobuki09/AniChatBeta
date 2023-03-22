@@ -10,7 +10,7 @@ from flask import Flask, request
 #from flask_ngrok import run_with_ngrok
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 roles = [
     'Anya Forger (Spy x Family) | Anime character from Spy x Family',
