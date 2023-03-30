@@ -1,31 +1,20 @@
-#pip install flask
-#pip install openai
-#pip install --upgrade openai
-#pip install flask-ngrok
-#pip install pyngrok
-#ngrok authtoken 2N3LjXxW4dZByhIqS7hmVo7kg8u_2Fk5eib1UiVhTTq61b2k4
-#ngrok authtoken 2N8opvWhk70ffSeK9A6hYPXkZne_2AheKBSxDHnomDePUjwBc
-
 from flask import Flask, request
-#from flask_ngrok import run_with_ngrok
 import openai
 
-openai.api_key = "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"
+openai.api_key = "sk-XXX" #Add your OpenAI chatGPT key here
 
 roles = [
+    'Makima (Chainsaw Man) | Anime character from Chainsaw Man',
     'Anya Forger (Spy x Family) | Anime character from Spy x Family',
     'Yor Forger (Spy x Family) | Anime character from Spy x Family',
     'Naruto | Anime character from Naruto',
-    'Makima (Chainsaw Man) | Anime character from Chainsaw Man',
     'Anna (Yours girlfriend) | User`s girlfriend and she loves User',
     'Bana (Yours ex-girlfriend) | User`s girlfriend and she hates User',
-    'Tom (Yours boyfriend) | User`s boyfriend and he loves User',
-    'Tim (Yours ex-boyfriend) | User`s boyfriend and he hates User',
-    'Kien Ngo | I am 31 years old and staying in Palermo, Italy. Master in Wireless Communication in University of Oulu Finland, Bachelor degree in PTIT, Vietnam. Love watching John Wich, Mr. Robot and Esport inclduing LoL and Valorant',
-        ]
+    'Lan (Bạn gái cũ) | Người bạn gái cũ này rất hận bạn',
+    'Lin (Bạn gái) | Người bạn gái này rất yêu bạn',
+    ]
 
 app = Flask(__name__)
-#run_with_ngrok(app)
 
 def chatcompletion(user_input, impersonated_role, explicit_input, chat_history):
   output = openai.ChatCompletion.create(
@@ -46,24 +35,19 @@ def chatcompletion(user_input, impersonated_role, explicit_input, chat_history):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    #dropdown_options = "\n".join([f'<option value="{role}">{role}</option>' for role in roles])
+    
     dropdown_options = "\n".join([f'<option value="{role}">{role.split(" | ")[0]}</option>' for role in roles])
 
 
-    if request.method == 'POST':
-
+    if request.method == 'POST':        
         
-        #dropdown_options = "\n".join([f'<option value="{role}" {"selected" if role == request.form.get("role") else "" }>{role}</option>' for role in roles])
         dropdown_options = "\n".join([f'<option value="{role}" {"selected" if role == request.form.get("role") else "" }>{role.split(" | ")[0]}</option>' for role in roles])
 
         button_text = request.form.get('button_text')
         text_input = request.form.get('text_input')
         dropdown_input = request.form.get('role')
-
         chat_history = request.form.get('history')
-
-        user_input = request.form.get('text_input')
-        #input_role = request.form.get('role').split('|')
+        user_input = request.form.get('text_input')        
         input_role = request.form.get('role').split(' | ')
 
         name = input_role[0].strip()
@@ -119,7 +103,7 @@ def home():
     <body style="background-color: #f2f2f2;">
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <form method="POST">
-                <strong><font size="6">Chat with your favorite characters BETA</font></strong><br>
+                <strong><font size="6">Chat with your favorite characters</font></strong><br>
                 <label>Enter some text:</label><br>
                 <textarea id="text_input" name="text_input" rows="5" cols="50"></textarea><br>
                 <label>Select an option:</label><br>
@@ -127,8 +111,8 @@ def home():
                     {dropdown_options}
                 </select>
                 Explicit language: <select id="dropdown" name="explicit">
-                    <option value="yes">yes</option>
-                    <option value="no">no</option>   
+                    <option value="no">no</option>
+                    <option value="yes">yes</option>                       
                 </select><input type="hidden" id="history" name="history" value=" "><br><br>
                 <button type="submit" name="button_text" value="submit">Submit</button>
             </form>
