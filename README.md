@@ -1,5 +1,7 @@
 # AniChat (Chat with different character through ChatGPT)
 
+Try it at: https://anichat.vercel.app/
+
 Change the API key in this code to make it work for you!
 
 openai . api_key  =  "sk-XXX"  #Add your OpenAI chatGPT key here 
